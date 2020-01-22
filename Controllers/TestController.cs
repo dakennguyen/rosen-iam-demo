@@ -9,9 +9,9 @@ namespace Demo.Controllers
     [Route("[controller]")]
     public class TestController : ControllerBase
     {
-        private readonly IUserRepository userRepository;
+        private readonly IGenericRepository<User> userRepository;
 
-        public TestController(IUserRepository userRepository)
+        public TestController(IGenericRepository<User> userRepository)
         {
             this.userRepository = userRepository;
         }

@@ -11,6 +11,7 @@ namespace Demo.Models.Entities
         [Required]
         public string Name { get; set; }
 
-        public virtual ICollection<UserApplicationMap> UserApplicationMaps { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
+        public virtual ICollection<ApplicationResourceMap> ApplicationResourceMaps { get; set; }
     }
 }

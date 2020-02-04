@@ -9,7 +9,7 @@ namespace Demo.Repositories
 {
     public interface IUserRepository : IGenericRepository<User>
     {
-        List<UserDTO> GetMapping();
+        List<UserDto> GetMapping();
     }
     public class UserRepository : GenericRepository<User>, IUserRepository
     {
@@ -17,13 +17,14 @@ namespace Demo.Repositories
         {
         }
 
-        public List<UserDTO> GetMapping()
+        public List<UserDto> GetMapping()
         {
             return Get()
-                .Include(x => x.UserApplicationMaps)
-                .Select(x => new UserDTO{
+                .Include(x => x.UserRoleMaps)
+                    .ThenInclude(x => x.Role)
+                .Select(x => new UserDto{
                     Name = x.Name,
-                    UserApplicationMaps = x.UserApplicationMaps,
+                    RoleNames = x.UserRoleMaps.Select(urm => urm.Role.Name).ToList(),
                 })
                 .ToList();
         }

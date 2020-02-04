@@ -3,9 +3,9 @@ using Demo.Models.Entities;
 
 namespace Demo.Models.Dtos
 {
-    public class UserDTO
+    public class UserDto
     {
         public string Name { get; set; }
-        public virtual ICollection<UserApplicationMap> UserApplicationMaps { get; set; }
+        public List<string> RoleNames { get; set; }
     }
 }

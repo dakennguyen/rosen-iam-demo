@@ -11,7 +11,10 @@ namespace Demo.Data
 
         public DbSet<User> User { get; set; }
         public DbSet<Application> Application { get; set; }
-        public DbSet<UserApplicationMap> UserApplicationMap { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<Resource> Resource { get; set; }
+        public DbSet<UserRoleMap> UserRoleMap { get; set; }
+        public DbSet<ApplicationResourceMap> ApplicationResourceMap { get; set; }
     }
 
 }

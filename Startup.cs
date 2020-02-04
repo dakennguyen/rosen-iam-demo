@@ -33,6 +33,7 @@ namespace Demo
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Database"]));
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

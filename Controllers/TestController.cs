@@ -9,9 +9,9 @@ namespace Demo.Controllers
     [Route("[controller]")]
     public class TestController : ControllerBase
     {
-        private readonly IGenericRepository<User> userRepository;
+        private readonly IUserRepository userRepository;
 
-        public TestController(IGenericRepository<User> userRepository)
+        public TestController(IUserRepository userRepository)
         {
             this.userRepository = userRepository;
         }
@@ -19,7 +19,7 @@ namespace Demo.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return this.Ok(userRepository.Get());
+            return this.Ok(userRepository.GetMapping());
         }
     }
 }

@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Demo.Models.Entities
 {
-    public class Resource
+    public class Item
     {
         [Key]
         public int Id { get; set; }
@@ -11,6 +10,8 @@ namespace Demo.Models.Entities
         [Required]
         public string Name { get; set; }
 
-        public virtual ICollection<Item> Items { get; set; }
+        [Required]
+        public int ResourceId { get; set; }
+        public Resource Resource { get; set; }
     }
 }

@@ -4,8 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Demo.Data;
 using Demo.Models.Entities;
+using Demo.Policies;
 using Demo.Repositories;
+using Demo.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -43,8 +46,14 @@ namespace Demo
                 options.Audience = this.Configuration["IDP:audience"];
             });
 
+            services.AddTransient<IResourceService, ResourceService>();
+
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IItemRepository, ItemRepository>();
+
+            services.AddScoped<IAuthorizationHandler, AdminAddHandler>();
+            services.AddScoped<IAuthorizationHandler, UserViewHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
